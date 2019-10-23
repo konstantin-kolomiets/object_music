@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Vaimo, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="1column"/>
+    <referenceContainer name="columns">
+        <container name="div.sidebar.holder" htmlTag="aside" htmlClass="column sidebar-holder" after="main" />
+    </referenceContainer>
+    <move element="div.sidebar.main" destination="div.sidebar.holder" before="-" />
+    <move element="div.sidebar.additional" destination="div.sidebar.holder"/>
+</layout>

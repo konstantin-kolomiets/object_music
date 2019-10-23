@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vaimo_Socials::main_menu"
+             title="Vaimo Socials"
+             module="Vaimo_Socials"
+             sortOrder="120"
+             action="adminhtml/system_config/edit/section/vaimo_socials"
+             resource="Vaimo_Socials::main_menu" />
+    </menu>
+</config>

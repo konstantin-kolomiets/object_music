@@ -1,0 +1,65 @@
+& when (@media-common = true) {
+    .panel.header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .header.links {
+        display: inline-flex;
+        align-items: center;
+        float: none;
+    }
+
+    .footer.content ul.socials, .socials {
+        display: flex;
+        padding: 0;
+        margin: 20px 0 0;
+        justify-content: flex-end;
+    }
+
+    .header .socials {
+        display: inline-flex;
+        margin: 0 10px 0 0;
+    }
+
+    .header .socials li {
+        margin-bottom: 0;
+    }
+
+    .footer.content .socials .socials-item-link, .socials-item-link {
+        width: 24px;
+        height: 24px;
+        display: block;
+        margin-left: 7px;
+    }
+
+    .footer.content .socials a, .socials a {
+        opacity: 0.85;
+        transition: all 0.2s ease;
+    }
+
+    .footer.content .socials a:hover, .socials a:hover {
+        opacity: 1;
+    }
+
+    .socials a[href*="facebook"] {
+        background-image: url('@{baseDir}images/facebook.svg');
+    }
+
+    .socials a[href*="instagram"] {
+        background-image: url('@{baseDir}images/instagram.svg');
+    }
+
+    .socials a[href*="youtube"] {
+        background-image: url('@{baseDir}images/youtube.svg');
+    }
+
+    .socials a[href*="telegram"] {
+        background-image: url('@{baseDir}images/telegram.svg');
+    }
+
+    .socials a[href*="viber"] {
+        background-image: url('@{baseDir}images/viber.svg');
+    }
+}

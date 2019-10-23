@@ -1,0 +1,12 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Vaimo_Socials::main_menu"
+                          title="Vaimo Socials Options"
+                          sortOrder="101"
+                />
+            </resource>
+        </resources>
+    </acl>
+</config>

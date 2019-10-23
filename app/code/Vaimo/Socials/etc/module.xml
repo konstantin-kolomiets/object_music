@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Vaimo Socials
+ *
+ * @author    Your Full Name <kostinatyn.kolomiiets@vaimo.com>
+ * @package   Vaimo Socials
+ * @copyright Copyright (c) 2018 Vaimo  (http://www.vaimo.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
+    <module name="Vaimo_Socials" setup_version="1.0.0" />
+</config>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links">
+            <block class="Vaimo\Socials\Block\Socials" name="socials2" template="Vaimo_Socials::socials.phtml" before="-" />
+        </referenceBlock>
+        <referenceBlock name="header" remove="true" />
+        <referenceBlock name="store.links" remove="true" />
+        <referenceContainer name="footer">
+            <container name="footer.contacts.wrapper" htmlTag="div" htmlClass="footer-contacts-wrapper" before="footer_links">
+                <block class="Magento\Framework\View\Element\Template" name="footer_contacts" template="Magento_Theme::footer_contacts.phtml"/>
+            </container>
+            <container name="footer.menu.wrapper" htmlTag="div" htmlClass="footer-menu-wrapper" before="footer_links">
+                <block class="Magento\Framework\View\Element\Template" name="footer_menu" template="Magento_Theme::footer_menu.phtml"/>
+            </container>
+            <container name="footer.socials.wrapper" htmlTag="div" htmlClass="footer-socials-wrapper" after="footer_links">
+                <block class="Vaimo\Socials\Block\Socials" name="socials" template="Vaimo_Socials::socials.phtml" />
+            </container>
+        </referenceContainer>
+        <move element="footer_links" destination="footer.menu.wrapper" before="footer_menu"/>
+        <move element="form.subscribe" destination="footer.socials.wrapper" before="socials"/>
+    </body>
+</page>
