@@ -42,24 +42,23 @@
     .footer.content .socials a:hover, .socials a:hover {
         opacity: 1;
     }
-
-    .socials a[href*="facebook"] {
-        background-image: url('@{baseDir}images/facebook.svg');
-    }
-
-    .socials a[href*="instagram"] {
-        background-image: url('@{baseDir}images/instagram.svg');
-    }
-
-    .socials a[href*="youtube"] {
-        background-image: url('@{baseDir}images/youtube.svg');
-    }
-
-    .socials a[href*="telegram"] {
-        background-image: url('@{baseDir}images/telegram.svg');
-    }
-
-    .socials a[href*="viber"] {
-        background-image: url('@{baseDir}images/viber.svg');
+    .socials {
+        a {
+            &[href*="facebook"] {
+                background-image: url('@{baseDir}images/facebook.svg');
+            }
+            &[href*="instagram"] {
+                background-image: url('@{baseDir}images/instagram.svg');
+            }
+            &[href*="youtube"] {
+                background-image: url('@{baseDir}images/youtube.svg');
+            }
+            &[href*="telegram"] {
+                background-image: url('@{baseDir}images/telegram.svg');
+            }
+            &[href*="viber"] {
+                background-image: url('@{baseDir}images/viber.svg');
+            }
+        }
     }
 }

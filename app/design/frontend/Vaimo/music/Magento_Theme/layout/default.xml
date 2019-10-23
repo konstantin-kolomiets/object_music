@@ -12,6 +12,9 @@
         </referenceBlock>
         <referenceBlock name="header" remove="true" />
         <referenceBlock name="store.links" remove="true" />
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="delivery_banner" template="Magento_Theme::banner.phtml" />
+        </referenceContainer>
         <referenceContainer name="footer">
             <container name="footer.contacts.wrapper" htmlTag="div" htmlClass="footer-contacts-wrapper" before="footer_links">
                 <block class="Magento\Framework\View\Element\Template" name="footer_contacts" template="Magento_Theme::footer_contacts.phtml"/>
