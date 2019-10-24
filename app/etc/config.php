@@ -129,6 +129,9 @@ return [
         'Klarna_Kp' => 1,
         'Magento_PaypalReCaptcha' => 1,
         'Temando_Shipping' => 1,
+        'Vaimo_AboutPage' => 1,
+        'Vaimo_CustomWidget' => 1,
+        'Vaimo_GuitareMaterial' => 1,
         'Vaimo_HelloWorld' => 1,
         'Vaimo_Socials' => 1,
         'Vertex_Tax' => 1
