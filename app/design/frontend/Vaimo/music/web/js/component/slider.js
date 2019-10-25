@@ -17,7 +17,10 @@ define([
 
         /** @inheritdoc */
         _init: function () {
-            $('.fotorama').slick();
+            $('.banner').slick({
+               'prevArrow': '<button type="button" class="slick-next"></button>',
+               'nextArrow': '<button type="button" class="slick-prev"></button>'
+            });
         }
    });
 
