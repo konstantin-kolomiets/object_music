@@ -1,14 +1,14 @@
 @import 'vendor/_slick.less';
-@import 'components/_module.less';
-
-@page__background-color: #ffffff;
-
+@import 'extends/_buttons.less';
+@import 'extends/_colors.less';
+@import 'extends/_variables.less';
+@import 'extends/_typography.less';
+@import 'extends/_icons.less';
 
 
 //
 //  Slider nav button
 //  ---------------------------------------------
-
 & when (@media-common = true) {
     .slick-arrow {
         display: flex;
@@ -60,4 +60,18 @@
             }
         }
     }
+
+    .icon-location {
+        .lib-icon-font(
+            @icon-location,
+            @_icon-font: @icon-font-name
+        )
+    }
+    .icon-mobile {
+        .lib-icon-font(
+            @icon-mobile,
+            @_icon-font: @icon-font-name
+        )
+    }
 }
+

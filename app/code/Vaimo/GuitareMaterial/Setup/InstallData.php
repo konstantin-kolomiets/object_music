@@ -1,65 +1,57 @@
 <?php
 /**
- * Copyright © 2019 Vaimo. All rights reserved.
- * See COPYING.txt for license details.
+ * Created by PhpStorm.
+ * User: kostiantyn
+ * Date: 2019-10-25
+ * Time: 12:49
  */
-
 namespace Vaimo\GuitareMaterial\Setup;
 
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-
-/**
- * @codeCoverageIgnore
- */
+use Magento\Eav\Setup\EavSetupFactory;
 class InstallData implements InstallDataInterface
 {
-    /**
-     * Eav setup factory
-     * @var EavSetupFactory
-     */
     private $eavSetupFactory;
-
-    /**
-     * Init
-     * @param EavSetupFactory $eavSetupFactory
-     */
-    public function __construct(\Magento\Eav\Setup\EavSetupFactory $eavSetupFactory)
+    public function __construct(EavSetupFactory $eavSetupFactory)
     {
         $this->eavSetupFactory = $eavSetupFactory;
     }
-
-    /**
-     * {@inheritdoc}
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
-     */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        $eavSetup = $this->eavSetupFactory->create();
+        $setup->startSetup();
+
+        $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+        $eavSetup->removeAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'guitare_material');
         $eavSetup->addAttribute(
             \Magento\Catalog\Model\Product::ENTITY,
             'guitare_material',
             [
-                'group' => 'General',
-                'type' => 'varchar',
+                'guitare_material' => 'int',
+                'select' => '',
+                'source' => \Vaimo\GuitareMaterial\Model\Attribute\Source\Material::class,
+                'frontend' => '',
                 'label' => 'Guitare Material',
                 'input' => 'select',
-                'source' => 'Vaimo\GuitareMaterial\Model\Attribute\Source\Material',
-                'frontend' => 'Vaimo\GuitareMaterial\Model\Attribute\Frontend\Material',
-                'backend' => 'Vaimo\GuitareMaterial\Model\Attribute\Backend\Material',
-                'required' => false,
-                'sort_order' => 50,
+                'class' => '',
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
-                'is_used_in_grid' => false,
-                'is_visible_in_grid' => false,
-                'is_filterable_in_grid' => false,
                 'visible' => true,
-                'is_html_allowed_on_front' => true,
-                'visible_on_front' => true
+                'required' => false,
+                'user_defined' => false,
+                'default' => '1',
+                'searchable' => false,
+                'filterable' => false,
+                'comparable' => false,
+                'visible_on_front' => false,
+                'used_in_product_listing' => true,
+                'unique' => false,
+                'apply_to' => ''
             ]
         );
+
+        $setup->endSetup();
     }
 }
