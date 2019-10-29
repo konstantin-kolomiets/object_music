@@ -10,7 +10,7 @@
         <referenceContainer name="content">
             <block class="Magento\Framework\View\Element\Template" name="test_display" template="Magento_Catalog::test.phtml" before="product.info.details" />
             <block class="Vaimo\HelloWorld\Block\Display" name="helloworld_display" template="Vaimo_HelloWorld::sayhello.phtml" after="product.info.details" />
-            <block class="Vaimo\HelloWorld\Block\Delivery" name="delivery_display" template="Vaimo_HelloWorld::delivery.phtml" after="helloworld_display" />
+            <block class="Vaimo\Delivery\Block\Delivery" name="delivery_display" template="Vaimo_Delivery::delivery.phtml" after="helloworld_display" />
         </referenceContainer>
     </body>
 </page>

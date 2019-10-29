@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <referenceContainer name="content">
-        <block class="Vaimo\HelloWorld\Block\Delivery" name="delivery_display" template="Vaimo_HelloWorld::delivery.phtml" />
+        <block class="Vaimo\Delivery\Block\Delivery" name="delivery_display" template="Vaimo_Delivery::delivery.phtml" />
     </referenceContainer>
 </page>

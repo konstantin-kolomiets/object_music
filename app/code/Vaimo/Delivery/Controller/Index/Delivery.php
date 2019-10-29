@@ -1,5 +1,5 @@
 <?php
-namespace Vaimo\HelloWorld\Controller\Index;
+namespace Vaimo\Delivery\Controller\Index;
 
 class Delivery extends \Magento\Framework\App\Action\Action
 {

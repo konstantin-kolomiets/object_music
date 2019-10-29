@@ -1,34 +1,19 @@
-<?php /**
- * Copyright © 2016 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
+<?php
+
 namespace Vaimo\AboutPage\Controller\Page;
 class View extends \Magento\Framework\App\Action\Action
 {
-    /**
-     * @var \Magento\Framework\Controller\Result\JsonFactory
-     */
-    protected $resultJsonFactory;
-    /**
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
-     */
+    protected $_pageFactory;
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory)
+        \Magento\Framework\View\Result\PageFactory $pageFactory)
     {
-        $this->resultJsonFactory = $resultJsonFactory;
-        parent::__construct($context);
+        $this->_pageFactory = $pageFactory;
+        return parent::__construct($context);
     }
-    /**
-     * View  page action
-     *
-     * @return \Magento\Framework\Controller\ResultInterface
-     */
+
     public function execute()
     {
-        $result = $this->resultJsonFactory->create();
-        $data = ['message' => 'Hello world! About Page!'];
-
-        return $result->setData($data);
-    } }
+        return $this->_pageFactory->create();
+    }
+}

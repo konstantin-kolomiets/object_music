@@ -2,19 +2,22 @@
 /**
  * Created by PhpStorm.
  * User: konstantin
+ * Date: 2019-10-29
+ * Time: 12:27
  */
 
-namespace Vaimo\HelloWorld\Block;
+namespace Vaimo\AboutPage\Block;
 use Magento\Framework\View\Element\Template;
-class Delivery extends \Magento\Framework\View\Element\Template
+
+class Main extends \Magento\Framework\View\Element\Template
 {
     public function __construct(\Magento\Framework\View\Element\Template\Context $context)
     {
         parent::__construct($context);
     }
 
-    public function deliveryDisplay()
+    public function main()
     {
-        return __('Delivery');
+        return __('Main Block');
     }
 }

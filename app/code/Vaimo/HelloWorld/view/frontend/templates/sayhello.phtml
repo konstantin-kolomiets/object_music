@@ -3,5 +3,21 @@
 * @var $this Vaimo\HelloWorld\Block\Display
 */
 ?>
-
+<p>This is my template!</p>
 <h2><?php echo $this->sayHello(); ?> </h2>
+<h2><?php echo $this->anotherSayHello(); ?> </h2>
+<div class="asd" style="border: 2px solid red;padding: 30px;">
+    <?php
+    $sku = 'Configurable Product 3';
+    $id = 23;
+    $_product = $this->getProductById($id);
+//    $_product = $this->getProductBySku($sku);
+//    echo $_product->getEntityId();
+    echo '<br />';
+    echo $_product->getName();
+    echo '<br />';
+    echo $_product->getPrice();
+    ?>
+</div>
+<?php $product2 = $this->getProductBySkuWithFactory($sku) ?>
+<p>sku: <?php echo $product2->getName(); ?></p>

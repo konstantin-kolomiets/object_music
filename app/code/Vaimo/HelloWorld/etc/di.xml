@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--<preference for="Vaimo\HelloWorld\Helper\Data"  type="Vaimo\HelloWorld\Helper\AnotherData" />-->
+    <type name="Vaimo\HelloWorld\Block\Display">
+        <arguments>
+            <argument name="anotherHelper" xsi:type="object">Vaimo\HelloWorld\Helper\AnotherData</argument>
+        </arguments>
+    </type>
+    <type name="Vaimo\HelloWorld\Helper\AnotherData">
+        <arguments>
+            <argument name="mystring" xsi:type="string">Hello from DI.xml</argument>
+        </arguments>
+    </type>
+    <virtualType type="Vaimo\HelloWorld\Helper\AnotherData" name="Vaimo\HelloWorld\Helper\VirtualAnotherData">
+        <arguments>
+            <argument name="mystring" xsi:type="string">Hello from virtual class</argument>
+        </arguments>
+    </virtualType>
+</config>
