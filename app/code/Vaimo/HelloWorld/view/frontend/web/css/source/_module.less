@@ -1,0 +1,42 @@
+& when (@media-common = true) {
+    .custom-products-grid {
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 30px -15px;
+            padding: 0;
+            list-style-type: none;
+        }
+        .product {
+            margin: 15px;
+            padding: 20px;
+            box-shadow: 0 0 10px 0 rgba(0,0,0, 0.05);
+            width: calc(~"25% - 30px");
+            box-sizing: border-box;
+            > * {
+                display: block;
+            }
+            .image {
+                display: block;
+            }
+            &-name {
+                font-weight: 500;
+                font-size: 1.1em;
+                margin: 10px 0 5px;
+            }
+            &-price {
+                font-size: 1.1em;
+                margin-bottom: 5px;
+                b {
+                    font-size: 0.9em;
+                }
+            }
+            &-sku {
+                margin-bottom: 5px;
+            }
+            &-description {
+                margin: 0;
+            }
+        }
+    }
+}

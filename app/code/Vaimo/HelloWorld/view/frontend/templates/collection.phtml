@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var $this Vaimo\HelloWorld\Block\Collection;
+ */
+?>
+
+<div class="collection">
+    <h3 class="collection-title">COLLECTION</h3>
+    <?php $collection = $this->getProductCollection(); ?>
+    <div class="custom-products-grid">
+        <ol class="product-list">
+            <?php foreach ($collection as $product) { ?>
+                <?php
+                $imageUrl = $this->helper('Magento\Catalog\Helper\Image')
+                    ->init($product, 'product_base_image')
+                    ->getUrl();
+                ?>
+                <li class="product">
+                    <a href="<?= $product->getUrlKey(); ?>" class="product-photo" tabindex="-1">
+                        <img class="image" src="<?= $imageUrl ?>" alt="alt">
+                    </a>
+                    <a href="" class="product-name"><?= $product->getName(); ?></a>
+                    <span class="product-price"><b>Price:</b> <?= $product->getPrice(); ?></span>
+                    <span class="product-sku"><b>SKU:</b> <?= $product->getSku(); ?></span>
+                    <p class="product-description"><?= $product->getShortDescription(); ?></p>
+                </li>
+            <?php } ?>
+        </ol>
+    </div>
+</div>

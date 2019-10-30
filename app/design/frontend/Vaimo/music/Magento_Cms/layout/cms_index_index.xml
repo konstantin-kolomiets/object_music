@@ -9,5 +9,6 @@
     <referenceContainer name="content">
         <block class="Magento\Framework\View\Element\Template" name="sayhello_display" template="Magento_Cms::sayhello.phtml" />
         <block class="Magento\Framework\View\Element\Template" name="delivery_banner" template="Magento_Theme::banner.phtml" before="-"/>
+        <block class="Vaimo\HelloWorld\Block\Collection" name="collection_display" template="Vaimo_HelloWorld::collection.phtml" after="delivery_banner"/>
     </referenceContainer>
 </page>
