@@ -4,38 +4,39 @@
 */
 ?>
 <p>This is my template!</p>
-<h2><?php echo $this->sayHello(); ?> </h2>
-<h2><?php echo $this->anotherSayHello(); ?> </h2>
-<h2><?php echo $this->changeProduct(); ?> </h2>
+<h3><?php echo $this->sayHello(); ?> </h3>
+<h3><?php echo $this->anotherSayHello(); ?> </h3>
 
-<div class="asd" style="border: 2px solid red;padding: 30px;">
-    <?php
-    $sku = 'product_dynamic_23';
-    $id = 23;
-    $_product = $this->getProductById($id);
-    $_product = $this->getProductBySku($sku);
-    echo $_product->getEntityId();
-    echo '<br />';
-    echo $_product->getName();
-    echo '<br />';
-    echo $_product->getPrice();
+<?php echo $this->changeProduct(); ?>
 
-
-    ?>
-</div>
+<!--<div class="asd" style="border: 2px solid red;padding: 30px;">-->
+<!--    --><?php
+//    $sku = 'product_dynamic_23';
+//    $id = 23;
+//    $_product = $this->getProductById($id);
+//    $_product = $this->getProductBySku($sku);
+//    echo $_product->getEntityId();
+//    echo '<br />';
+//    echo $_product->getName();
+//    echo '<br />';
+//    echo $_product->getPrice();
+//
+//
+//    ?>
+<!--</div>-->
 <?php
-$product2 = $this->getProductBySkuWithFactory($sku);
-$imageUrl = $this->helper('Magento\Catalog\Helper\Image')
-    ->init($product2, 'product_base_image')
-    ->constrainOnly(TRUE)
-    ->keepAspectRatio(TRUE)
-    ->keepTransparency(TRUE)
-    ->keepFrame(FALSE)
-    ->resize(240, 300)->getUrl();?>
-<p>sku:
-    <?php
-    echo $product2->getName();
+//$product2 = $this->getProductBySkuWithFactory($sku);
+//$imageUrl = $this->helper('Magento\Catalog\Helper\Image')
+//    ->init($product2, 'product_base_image')
+//    ->constrainOnly(TRUE)
+//    ->keepAspectRatio(TRUE)
+//    ->keepTransparency(TRUE)
+//    ->keepFrame(FALSE)
+//    ->resize(240, 300)->getUrl();?>
+<!--<p>sku:-->
+<!--    --><?php
+//    echo $product2->getName();
 //    echo "<pre>"; print_r($product2->debug()); "</pre>"; die("dead");
-    ?>
-</p>
-<img src="<?php echo $imageUrl; ?>" alt="alt">
+//    ?>
+<!--</p>-->
+<!--<img src="--><?php //echo $imageUrl; ?><!--" alt="alt">-->

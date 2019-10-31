@@ -70,3 +70,18 @@ class Display extends \Magento\Framework\View\Element\Template
     }
 
 }
+
+// for all stores:
+// protected $storeManager;
+// protected $storeViewId = null;
+// \Magento\Store\Model\StoreManagerInterface $storeManager,
+// $this->storeManager = $storeManager;
+//  if ($storeViewId = $this->storeManager->getStore()->getId()) {
+//            $this->storeViewId = $storeViewId;
+//        }
+//$storeIds = array_keys($this->storeManager->getStores());
+////activate products
+//$updateAttributes['status'] = \Magento\Catalog\Model\Product\Attribute\Source\Status::STATUS_ENABLED;
+//foreach ($storeIds as $storeId) {
+//    $this->productAction->updateAttributes($productIdsActivate, $updateAttributes, $storeId);
+//}
