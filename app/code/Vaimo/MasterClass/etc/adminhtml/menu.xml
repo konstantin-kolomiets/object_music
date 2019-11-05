@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vaimo_MasterClass::masterclass"
+             resource="Vaimo_MasterClass::masterclass"
+             title="Master Classes"
+             action="masterclass/index/index"
+             module="Vaimo_MasterClass"
+             sortOrder="99"
+             parent="Magento_Backend::marketing_user_content"
+             dependsOnModule="Vaimo_MasterClass"/>
+    </menu>
+</config>

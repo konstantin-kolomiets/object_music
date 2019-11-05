@@ -134,6 +134,7 @@ return [
         'Vaimo_Delivery' => 1,
         'Vaimo_GuitareMaterial' => 1,
         'Vaimo_HelloWorld' => 1,
+        'Vaimo_MasterClass' => 1,
         'Vaimo_Socials' => 1,
         'Vertex_Tax' => 1
     ]
