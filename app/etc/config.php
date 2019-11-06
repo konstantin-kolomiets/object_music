@@ -132,6 +132,7 @@ return [
         'Vaimo_AboutPage' => 1,
         'Vaimo_CustomWidget' => 1,
         'Vaimo_Delivery' => 1,
+        'Vaimo_Events' => 1,
         'Vaimo_GuitareMaterial' => 1,
         'Vaimo_HelloWorld' => 1,
         'Vaimo_MasterClass' => 1,
