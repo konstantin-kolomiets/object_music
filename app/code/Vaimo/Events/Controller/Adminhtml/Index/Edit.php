@@ -2,25 +2,31 @@
 
 namespace Vaimo\Events\Controller\Adminhtml\Index;
 
+use Vaimo\Events\Controller\Adminhtml\AbstractEvent;
 
-
-
-class Edit extends \Magento\Backend\App\Action
+class Edit extends AbstractEvent
 {
-    protected $resultPageFactory;
+    const TITLE = 'Event Edit';
 
-    public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
-    )
-    {
-        $this->resultPageFactory = $resultPageFactory;
-        parent::__construct($context);
-    }
     public function execute()
     {
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend((__('Events')));
-        return $resultPage;
+        $id = $this->getRequest()->getParam(static::QUERY_PARAM_ID);
+        if (!empty($id)) {
+            try {
+                $model = $this->repository->getById($id);
+                $this->sessionManager->setCurrentEventModel($model);
+            } catch (\Magento\Framework\Exception\NoSuchEntityException $exception) {
+                $this->messageManager->addErrorMessage(__('Entity with id %1 not found', $id));
+                return $this->redirectToGrid();
+            }
+        } else {
+            if($this->_getSession()->getFormData()){
+                $model = $this->getModel();
+                $model->setData($this->_getSession()->getFormData());
+                $this->_getSession()->setFormData(null);
+                $this->sessionManager->setCurrentEventModel($model);
+            }
+        }
+        return parent::execute();
     }
 }

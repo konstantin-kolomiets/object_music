@@ -94,25 +94,25 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
-        <column name="image">
+        <column name="image" class="Vaimo\Events\Ui\Component\Listing\Column\GroupIcon">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="altField" xsi:type="string">name</item>
+                    <item name="has_preview" xsi:type="string">1</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                </item>
+            </argument>
+        </column>
+        <column name="is_active" component="Magento_Ui/js/grid/columns/select" sortOrder="40">
             <settings>
-                <filter>textRange</filter>
-                <label translate="true">Event image</label>
-                <sorting>asc</sorting>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Enable?</label>
             </settings>
         </column>
-        <!--<column name="image" class="Atharva\FormGrid\Ui\Component\Listing\Column\Image">-->
-            <!--<argument name="data" xsi:type="array">-->
-                <!--<item name="config" xsi:type="array">-->
-                    <!--<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>-->
-                    <!--<item name="sortable" xsi:type="boolean">false</item>-->
-                    <!--<item name="altField" xsi:type="string">name</item>-->
-                    <!--<item name="has_preview" xsi:type="string">1</item>-->
-                    <!--<item name="label" xsi:type="string" translate="true">Image</item>-->
-                    <!--<item name="sortOrder" xsi:type="number">20</item>-->
-                <!--</item>-->
-            <!--</argument>-->
-        <!--</column>-->
         <actionsColumn name="actions" class="Vaimo\Events\Ui\Component\Listing\Column\Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
