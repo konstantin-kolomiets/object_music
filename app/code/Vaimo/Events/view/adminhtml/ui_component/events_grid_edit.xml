@@ -12,9 +12,9 @@
     </item>
     <item name="template" xsi:type="string">templates/form/collapsible</item>
     <item name="buttons" xsi:type="array">
-        <!--<item name="back" xsi:type="string">Vaimo\Events\Block\Adminhtml\Post\Edit\Buttons\BackButton</item>-->
+        <item name="back" xsi:type="string">Vaimo\Events\Block\Adminhtml\Events\Buttons\BackButton</item>
         <!--<item name="delete" xsi:type="string">Vaimo\Events\Block\Adminhtml\Post\Edit\Buttons\DeleteButton</item>-->
-        <!--<item name="reset" xsi:type="string">Vaimo\Events\Block\Adminhtml\Post\Edit\Buttons\ResetButton</item>-->
+        <item name="reset" xsi:type="string">Vaimo\Events\Block\Adminhtml\Events\Buttons\ResetButton</item>
         <item name="save" xsi:type="string">Vaimo\Events\Block\Adminhtml\Events\Buttons\SaveButton</item>
         <!--<item name="save_and_continue" xsi:type="string">Vaimo\Events\Block\Adminhtml\Post\Edit\Buttons\SaveAndContinue</item>-->
     </item>
