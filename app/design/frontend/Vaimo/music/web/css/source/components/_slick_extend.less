@@ -1,0 +1,55 @@
+//
+//  Slider nav button
+//  ---------------------------------------------
+& when (@media-common = true) {
+    .slick-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255,255,255, .85);
+        color: @color-gray20;
+        font-size: 20px;
+        position: absolute;
+        z-index: 10;
+        padding: 0;
+        top: 50%;
+        box-shadow: none;
+        border: none;
+        transform: translateY(-50%);
+        &:hover {
+            border: none;
+            background: @color-white;
+            color: @color-black;
+        }
+        &:before {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 19px;
+            line-height: 28px;
+            color: @color-gray46;
+            content: '\e617';
+            font-family: 'luma-icons';
+            margin: 0;
+            vertical-align: top;
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+        &.slick-next {
+            padding-right: 3px;
+            left: 10px;
+        }
+        &.slick-prev {
+            right: 10px;
+            padding-left: 3px;
+            &:before {
+                content: '\e608';
+            }
+        }
+    }
+}

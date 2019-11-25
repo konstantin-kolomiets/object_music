@@ -73,8 +73,10 @@
             <dataType>text</dataType>
             <placeholder translate="true">Phone</placeholder>
             <validation>
+                <rule xsi:type="string" name="required-entry">string</rule>
+                <rule xsi:type="number" name="min_text_length">10</rule>
+                <rule xsi:type="number" name="max_text_length">10</rule>
                 <rule xsi:type="boolean" name="validate-number">true</rule>
-                <rule xsi:type="boolean" name="required-entry">true</rule>
             </validation>
         </settings>
     </field>

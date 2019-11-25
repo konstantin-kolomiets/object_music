@@ -1,0 +1,84 @@
+/**
+ * Copyright © Vaimo Group. All rights reserved.
+ * See LICENSE_VAIMO.txt for license details.
+ */
+
+@keyframes slide-down-header {
+    from {
+        top: -50px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-down-navbar {
+    from {
+        top: -50px;
+        opacity: 0;
+    }
+    to {
+        top: 4px;
+        opacity: 1;
+    }
+}
+
+// ---------------------------------------------------------------------------------
+//  Mobile
+//
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+    .page-wrapper.sticky-header {
+        .page-header {
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            border-bottom: initial;
+            animation: slide-down-header 0.1s ease;
+        }
+    }
+
+}
+
+// ---------------------------------------------------------------------------------
+//  Tablet
+//
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    .page-header {
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+        z-index: 90;
+    }
+
+}
+
+// ---------------------------------------------------------------------------------
+//  Desktop
+//
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+    .page-header {
+        position: inherit;
+        z-index: inherit;
+    }
+
+    .page-wrapper.sticky-header {
+        .page-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 21;
+            animation: slide-down-header 0.1s ease;
+            .header.content {
+                display: none;
+            }
+        }
+    }
+}
