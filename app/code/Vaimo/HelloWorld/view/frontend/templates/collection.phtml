@@ -19,7 +19,7 @@
                     <a href="<?= $product->getUrlKey(); ?>" class="product-photo" tabindex="-1">
                         <img class="image" src="<?= $imageUrl ?>" alt="alt">
                     </a>
-                    <a href="" class="product-name"><?= $product->getName(); ?></a>
+                    <a href="<?= $product->getUrlKey(); ?>" class="product-name"><?= $product->getName(); ?></a>
                     <span class="product-price"><b>Price:</b> <?= $product->getPrice(); ?></span>
                     <span class="product-sku"><b>SKU:</b> <?= $product->getSku(); ?></span>
                     <p class="product-description"><?= $product->getShortDescription(); ?></p>

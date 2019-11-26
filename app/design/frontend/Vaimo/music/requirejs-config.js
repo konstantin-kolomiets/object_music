@@ -15,12 +15,5 @@ var config = {
             'vendor/responsive-utils': 'js/vendor/responsive-utils',
             'phoneUA': 'js/mixins/validation-mixin',
         }
-    },
-    // config: {
-    //     'mixins': {
-    //         'mage/validation' : {
-    //             'js/mixins/validation-mixin' : true
-    //         },
-    //     }
-    // }
+    }
 };

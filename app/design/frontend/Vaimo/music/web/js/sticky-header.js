@@ -28,7 +28,7 @@ define([
                 // if (util.currentGrid == 'desktop') {
                 // }
                 // Add margin for whole page
-                $pageWrapper.css('margin-top', $headerHeight);
+                // $pageWrapper.css('margin-top', $headerHeight);
 
                 $('body').addClass('sticky-header');
 
@@ -45,7 +45,7 @@ define([
                 $headerHeight = $pageHeader.outerHeight();
 
                 // Remove margin for page
-                $pageWrapper.removeAttr('style');
+                // $pageWrapper.removeAttr('style');
 
                 $('body').removeClass('sticky-header');
             };
@@ -67,11 +67,9 @@ define([
                     var $scrollTop = $(window).scrollTop();
 
                     if ($scrollTop >= $headerHeight) {
-
                         enableStickyHeader();
 
                     } else {
-
                         disableStickyHeader();
                     }
 
@@ -92,12 +90,10 @@ define([
                     var $scrollTop = $(window).scrollTop();
 
                     if ($scrollTop >= $headerHeight && !isScrolled  && !($('html.search-opened').length)) {
-
                         enableStickyHeader();
                     }
 
                     if ($scrollTop < $headerHeight && isScrolled) {
-
                         disableStickyHeader();
                     }
 
