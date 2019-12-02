@@ -23,37 +23,57 @@ define([
 
             subscriptions: function () {
                 customerData.get('cart').subscribe(_.debounce(function (data) {
-                    this.filterCartData(data, this.product.productIds);
+                    this.filterCartData(data, this.product.productIds, this.product.productOptions);
                 }).bind(this), 300);
             },
 
-            filterCartData: function (array, i) {
+            filterCartData: function (array, id, options) {
                 const self = this;
 
                 array.items.filter(function(obj) {
-                    if(obj.product_id == i){
-                        self.product = obj;
-                        console.log(self.product);
-                        self.showModal();
+                    if(obj.product_id === id){
+                        if(obj.options.length === 0) {
+                            self.modal(self, obj);
+                        } else {
+                           self.filterOptions(obj, options);
+                        }
                     }
                 });
             },
 
-            showModal: function () {
-                var popup = $('<div class="add-to-cart-dialog">'+ template(modalTpl, this.product) +'</div>');
-                console.log(this.product);
+            filterOptions: function(obj, options) {
+                var optionsLength = 0;
+                for(var i = 0; i < options.length; i++) {
+                    if (obj.options[i].option_id === options[i].option_id
+                        && +obj.options[i].option_value === options[i].option_value) {
+                        optionsLength++;
+                        if(optionsLength === options.length) {
+                            this.modal(this, obj);
+                        }
+                    }
+                }
+            },
 
+            modal: function(self, obj) {
+                self.product = obj;
+                self.showModal();
+            },
+
+            showModal: function () {
+                var popup = $(template(modalTpl, this.product));
                 popup.modal({
                     modalClass: 'add-to-cart-popup',
                     buttons: [
                         {
                             text: 'Continue Shopping',
+                            class: 'action',
                             click: function () {
                                 this.closeModal();
                             }
                         },
                         {
                             text: 'Proceed to Checkout',
+                            class: 'action primary',
                             click: function () {
                                 window.location = window.checkout.checkoutUrl
                             }
@@ -63,17 +83,29 @@ define([
                 popup.modal('openModal');
             },
 
-            _renderForm: function () {
-                var form = $(template(modalTpl, this.product));
-            },
-
             /**
              * @param {jQuery} form
              */
             ajaxSubmit: function (form) {
                 var self = this,
                     productIds = idsResolver(form),
-                    formData = new FormData(form[0]);
+                    formData = new FormData(form[0]),
+                    formDataArray = $(form).serializeArray();
+
+                var optionItems = function getOptions(options) {
+                    return options
+                        .filter(function(el) {
+                            if (el.name.match(/\d+/g)) {
+                                return el;
+                            }
+                        })
+                        .map(function(el) {
+                            return {
+                                option_id: +el.name.match(/\d+/g).toString(),
+                                option_value: +el.value
+                            }
+                        });
+                };
 
                 $(self.options.minicartSelector).trigger('contentLoading');
                 self.disableAddToCartButton(form);
@@ -144,9 +176,11 @@ define([
                                .find('span')
                                .html(res.product.statusText);
                         }
-                        self.enableAddToCartButton(form);
 
-                        self.product.productIds = productIds;
+                        self.product.productIds = productIds[productIds.length-1];
+                        self.product.productOptions = optionItems(formDataArray);
+
+                        self.enableAddToCartButton(form);
                     },
 
                     /** @inheritdoc */
