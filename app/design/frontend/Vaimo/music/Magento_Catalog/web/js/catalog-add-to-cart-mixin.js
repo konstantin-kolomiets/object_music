@@ -9,8 +9,10 @@ define([
    'Magento_Customer/js/customer-data',
    'Magento_Catalog/js/product/view/product-ids-resolver',
    'mage/template',
-   'text!Magento_Catalog/template/modal.html'
-], function ($, _, customerData, idsResolver, template, modalTpl) {
+   'text!Magento_Catalog/template/modal.html',
+   'text!Magento_Catalog/template/default-modal.html',
+   'Magento_Ui/js/modal/modal',
+], function ($, _, customerData, idsResolver, template, modalTpl, defaultModalTpl) {
 'use strict';
 
     return function (modalAddToCart) {
@@ -23,19 +25,20 @@ define([
 
             subscriptions: function () {
                 customerData.get('cart').subscribe(_.debounce(function (data) {
-                    this.filterCartData(data, this.product.productIds, this.product.productOptions);
-                }).bind(this), 300);
+                    this.filterCartData(data, this.product.productId, this.product.productOptions, this.product.productSKU);
+                }, 300).bind(this));
             },
 
-            filterCartData: function (array, id, options) {
+            filterCartData: function (array, id, options, sku) {
                 const self = this;
-
                 array.items.filter(function(obj) {
-                    if(obj.product_id === id){
-                        if(obj.options.length === 0) {
-                            self.modal(self, obj);
-                        } else {
-                           self.filterOptions(obj, options);
+                    if(obj.product_type === "simple" || obj.product_type === "configurable"){
+                        if(obj.product_id === id) {
+                            if(obj.options.length === 0) {
+                                self.modal(obj);
+                            } else {
+                                self.filterOptions(obj, options);
+                            }
                         }
                     }
                 });
@@ -48,20 +51,28 @@ define([
                         && +obj.options[i].option_value === options[i].option_value) {
                         optionsLength++;
                         if(optionsLength === options.length) {
-                            this.modal(this, obj);
+                            this.modal(obj);
                         }
                     }
                 }
             },
 
-            modal: function(self, obj) {
-                self.product = obj;
-                self.showModal();
+            modal: function(obj) {
+                this.product = obj;
+                this.showModal(modalTpl, this.product);
             },
 
-            showModal: function () {
-                var popup = $(template(modalTpl, this.product));
+            defaultModal: function() {
+                var info = {
+                    product_name: 'product name'
+                }
+                this.showModal(defaultModalTpl, info);
+            },
+
+            showModal: function (tpl, data) {
+                var popup = $(template(tpl, data));
                 popup.modal({
+                    // type: 'slide',
                     modalClass: 'add-to-cart-popup',
                     buttons: [
                         {
@@ -72,10 +83,10 @@ define([
                             }
                         },
                         {
-                            text: 'Proceed to Checkout',
+                            text: 'Proceed to Cart',
                             class: 'action primary',
                             click: function () {
-                                window.location = window.checkout.checkoutUrl
+                                window.location = window.checkout.cartUrl
                             }
                         }
                     ]
@@ -91,6 +102,17 @@ define([
                     productIds = idsResolver(form),
                     formData = new FormData(form[0]),
                     formDataArray = $(form).serializeArray();
+
+                var getProductId = function (arr) {
+                    var idArray = arr
+                        .filter(function (el) {
+                            if (el.name === "product") {
+                                return el;
+                            }
+                        });
+                    var result = idArray[0].value;
+                    return result ? result : null; // or undefined
+                };
 
                 var optionItems = function getOptions(options) {
                     return options
@@ -121,6 +143,8 @@ define([
 
                     /** @inheritdoc */
                     beforeSend: function () {
+                        // self.cartItems = customerData.get('cart')().items;
+                        // console.log(self.cartItems);
                         if (self.isLoaderEnabled()) {
                             $('body').trigger(self.options.processStart);
                         }
@@ -177,8 +201,10 @@ define([
                                .html(res.product.statusText);
                         }
 
-                        self.product.productIds = productIds[productIds.length-1];
+                        // self.cartItems = customerData.get('cart')().items;
                         self.product.productOptions = optionItems(formDataArray);
+                        self.product.productId = getProductId(formDataArray);
+                        self.product.productSKU = form.data().productSku;
 
                         self.enableAddToCartButton(form);
                     },
