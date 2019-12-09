@@ -83,10 +83,10 @@ define([
                             }
                         },
                         {
-                            text: 'Proceed to Cart',
+                            text: 'Proceed to Checkout',
                             class: 'action primary',
                             click: function () {
-                                window.location = window.checkout.cartUrl
+                                window.location = window.checkout.checkoutUrl
                             }
                         }
                     ]

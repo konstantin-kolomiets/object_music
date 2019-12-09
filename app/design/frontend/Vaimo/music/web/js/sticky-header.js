@@ -12,13 +12,16 @@ define([
     $(document).ready(function () {
 
         // Apply sticky header on every pages except checkout page
-        if (!$('body.checkout-index-index').length) {
+        // if (!$('body.checkout-index-index').length) {
 
             var $pageWrapper = $('.page-wrapper'),
                 $pageHeader = $pageWrapper.find('.page-header'),
                 $headerHeight = $pageHeader.outerHeight(),
                 isScrolled = false,
                 debounceTime = 0;
+
+            // Add margin for whole page
+            $pageWrapper.css('margin-top', $headerHeight);
 
             var enableStickyHeader = function () {
                 // Add sticky-header class
@@ -100,7 +103,7 @@ define([
                 }, debounceTime);
 
             });
-        }
+        // }
 
     });
 

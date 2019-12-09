@@ -15,6 +15,7 @@ define([
     $.widget('mage.qtyManager', {
         _create: function () {
             this._constructorBlock();
+            this._minQtyChecker();
             this._bind();
         },
 
@@ -44,6 +45,7 @@ define([
          */
         _setQty: function (qty) {
             this.qtyInput.val(qty);
+            this.triggerChangeInput();
         },
 
         /**
@@ -66,7 +68,7 @@ define([
          */
         _decreaseQty: function() {
             var newQty = this._getQnty() - 1;
-            if (newQty < 1) {
+            if (newQty <= 1) {
                 newQty = 1;
                 this._disableButton();
             }
@@ -85,17 +87,30 @@ define([
         },
 
         /**
-         * @description Method for add disable attribute for decrease button.
+         * @description Method for add disabled attribute for decrease button.
          */
         _disableButton: function() {
-            this.decreaseBtn.attr('disable', 'true');
+            this.decreaseBtn.attr('disabled', 'disabled');
         },
 
         /**
-         * @description Method for remove disable attribute for decrease button.
+         * @description Method for remove disabled attribute for decrease button.
          */
         _enableButton: function() {
-            this.decreaseBtn.attr('disable', 'false');
+            this.decreaseBtn.removeAttr('disabled');
+        },
+
+        /**
+         * @description Method for disable decrease button if quantity == 1 when page is just loaded.
+         */
+        _minQtyChecker: function() {
+            if (this._getQnty() == 1) {
+                this._disableButton();
+            }
+        },
+
+        triggerChangeInput: function () {
+            this.qtyInput.trigger('change');
         }
 
     });
