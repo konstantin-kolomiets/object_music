@@ -5,7 +5,8 @@
 
 define([
    'jquery',
-   'Vaimo_QtyManager/js/qty-manager'
+   'Vaimo_QtyManager/js/qty-manager',
+   'Vaimo_QtyManager/js/qty-manager-cart'
 ], function ($) {
     'use strict';
 
@@ -14,6 +15,13 @@ define([
         self.qtyManager({
             el: self
         });
-    })
+    });
+
+    $('.form.form-cart .input-text.qty').each(function () {
+        self = $(this);
+        self.qtyManagerCart({
+            el: self
+        });
+    });
 
 });

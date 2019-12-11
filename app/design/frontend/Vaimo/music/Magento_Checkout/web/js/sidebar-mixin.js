@@ -88,13 +88,14 @@ define([
                 var productData = this._getProductById(Number(elem.data('cart-item')));
 
                 if (!_.isUndefined(productData)) {
-                    $(document).trigger('ajax:updateCartItemQty');
+                    // $(document).trigger('ajax:updateCartItemQty');
+                    this.recalculateTotals();
                 }
             },
 
-            // recalculateTotals: function () {
-            //     $(document).trigger('recalculateTotals');
-            // },
+            recalculateTotals: function () {
+                $(document).trigger('recalculateTotals');
+            },
 
 
 

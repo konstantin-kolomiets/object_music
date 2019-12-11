@@ -8,7 +8,8 @@ define([
 'underscore',
 'mage/template',
 'text!Vaimo_QtyManager/template/qty-template.html',
-'jquery/ui'
+'jquery/ui',
+'mage/validation'
    ], function ($, _, template, qtyTemplate) {
     'use strict';
 
@@ -29,6 +30,9 @@ define([
             this.block.find('[data-input]').replaceWith(this.element);
             this.qtyInput = this.block.find('.input-text.qty');
             this.decreaseBtn = this.block.find('[data-qty=decrease]');
+            this.currentProductRow = this.block.closest('.item-info');
+            this.currentProductPrice = this.currentProductRow.find('[data-th="Price"] .price');
+            this.currentProductTotal = this.currentProductRow.find('[data-th="Subtotal"] .price');
         },
 
         /**
@@ -45,14 +49,41 @@ define([
          */
         _setQty: function (qty) {
             this.qtyInput.val(qty);
-            this.triggerChangeInput();
+        },
+
+        /**
+         * @description Method for update total price for current product in cart.
+         */
+        updateCurrentTotal: function () {
+            let price = this.currentProductPrice.text();
+            let priceCurrency = price.replace(/\d+.\d+/g,'');
+            let priceValue = price.replace(/[^\d.-]/g, '');
+            let totalSum = (priceValue * this.qtyInput.val()).toFixed(2).toString();
+            let totalPrice = priceCurrency + totalSum;
+            this.currentProductTotal.text(totalPrice);
+        },
+
+        /**
+         * @description Method for update qty value and total price.
+         * @param {qty} qty - The new quantity value.
+         */
+        _updateQty: function (qty) {
+            this._setQty(qty);
+            // Apply triggerChangeInput on minicart
+            if (this.qtyInput.closest('#mini-cart').length) {
+                this.triggerChangeInput();
+            }
+            // Apply updateCurrentTotal on checkout page
+            if ($('body.checkout-cart-index').length) {
+                this.updateCurrentTotal();
+            }
         },
 
         /**
          * @description Method for decrease and increase events.
          */
         _bind: function () {
-            var self = this;
+            let self = this;
             this.block.on('click', '[data-qty=decrease]', function (e) {
                 e.preventDefault();
                 self._decreaseQty();
@@ -61,29 +92,46 @@ define([
                 e.preventDefault();
                 self._increaseQty();
             });
+            this.block.on('focusout', '.input-text.qty', function () {
+                if(!this.closest('#mini-cart')){
+                    self._isValidQtyUpdate();
+                }
+            });
+
         },
 
         /**
          * @description Method for decrease quantity.
          */
         _decreaseQty: function() {
-            var newQty = this._getQnty() - 1;
+            let newQty = this._getQnty() - 1;
             if (newQty <= 1) {
                 newQty = 1;
                 this._disableButton();
             }
-            this._setQty(newQty);
+            this._updateQty(newQty);
         },
 
         /**
          * @description Method for increase quantity.
          */
         _increaseQty: function() {
-            var newQty = this._getQnty() + 1;
+            let newQty = this._getQnty() + 1;
             if (newQty > 1) {
                 this._enableButton();
             }
-            this._setQty(newQty);
+            this._updateQty(newQty);
+        },
+
+        /**
+         * @description Method for validate quantity.
+         */
+        _isValidQtyUpdate: function () {
+            let newQty = this._getQnty();
+            if (newQty <= 1) {
+                newQty = 1;
+            }
+            this._updateQty(newQty);
         },
 
         /**
@@ -112,6 +160,8 @@ define([
         triggerChangeInput: function () {
             this.qtyInput.trigger('change');
         }
+
+
 
     });
 
