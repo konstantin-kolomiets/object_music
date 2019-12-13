@@ -8,6 +8,9 @@ var config = {
         'mixins': {
             'Magento_Checkout/js/sidebar': {
                 'Magento_Checkout/js/sidebar-mixin': true
+            },
+            'Magento_Checkout/js/action/update-shopping-cart': {
+                'Magento_Checkout/js/action/update-shopping-cart-mixin': true
             }
         }
     }

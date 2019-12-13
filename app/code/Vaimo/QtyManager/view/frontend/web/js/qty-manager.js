@@ -30,9 +30,6 @@ define([
             this.block.find('[data-input]').replaceWith(this.element);
             this.qtyInput = this.block.find('.input-text.qty');
             this.decreaseBtn = this.block.find('[data-qty=decrease]');
-            this.currentProductRow = this.block.closest('.item-info');
-            this.currentProductPrice = this.currentProductRow.find('[data-th="Price"] .price');
-            this.currentProductTotal = this.currentProductRow.find('[data-th="Subtotal"] .price');
         },
 
         /**
@@ -49,18 +46,7 @@ define([
          */
         _setQty: function (qty) {
             this.qtyInput.val(qty);
-        },
-
-        /**
-         * @description Method for update total price for current product in cart.
-         */
-        updateCurrentTotal: function () {
-            let price = this.currentProductPrice.text();
-            let priceCurrency = price.replace(/\d+.\d+/g,'');
-            let priceValue = price.replace(/[^\d.-]/g, '');
-            let totalSum = (priceValue * this.qtyInput.val()).toFixed(2).toString();
-            let totalPrice = priceCurrency + totalSum;
-            this.currentProductTotal.text(totalPrice);
+            this.triggerChangeInput();
         },
 
         /**
@@ -72,10 +58,6 @@ define([
             // Apply triggerChangeInput on minicart
             if (this.qtyInput.closest('#mini-cart').length) {
                 this.triggerChangeInput();
-            }
-            // Apply updateCurrentTotal on checkout page
-            if ($('body.checkout-cart-index').length) {
-                this.updateCurrentTotal();
             }
         },
 
@@ -97,7 +79,6 @@ define([
                     self._isValidQtyUpdate();
                 }
             });
-
         },
 
         /**
@@ -157,11 +138,12 @@ define([
             }
         },
 
+        /**
+         * @description Method for input change trigger simulation.
+         */
         triggerChangeInput: function () {
             this.qtyInput.trigger('change');
         }
-
-
 
     });
 

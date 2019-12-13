@@ -76,7 +76,7 @@ define([
                 this._ajax(this.options.url.update, {
                     'item_id': element.data('cart-item'),
                     'item_qty': element.val()
-                }, element, this._updateItemQtyAfter);
+                }, element, this._updateItemQtyAfter, this.updateProductTotalInCart(element.data('cartItemId'), element.val()));
             },
 
             /**
@@ -86,9 +86,7 @@ define([
              */
             _updateItemQtyAfter: function (elem) {
                 var productData = this._getProductById(Number(elem.data('cart-item')));
-
                 if (!_.isUndefined(productData)) {
-                    // $(document).trigger('ajax:updateCartItemQty');
                     this.recalculateTotals();
                 }
             },
@@ -97,7 +95,40 @@ define([
                 $(document).trigger('recalculateTotals');
             },
 
+            /**
+             * Update product in cart
+             * @param el   = changed input cartItemId
+             * @param val  = changed input value
+             */
+            updateProductTotalInCart: function (el, val) {
+                $('#shopping-cart-table [data-cart-item-id="' + el + '"]').val(val).trigger('change');
+            },
 
+            /**
+             * @param {HTMLElement} elem
+             * @private
+             */
+            _removeItem: function (elem) {
+                var itemId = elem.data('cart-item');
+
+                this._ajax(this.options.url.remove, {
+                    'item_id': itemId
+                }, elem, this._removeItemAfter, this.removeProductInCart(itemId));
+            },
+
+            /**
+             * Remove product in cart
+             * @param el = product id
+             */
+            removeProductInCart: function (el) {
+                 if (window.location.href === this.shoppingCartUrl || window.location.href === this.shoppingCartUrl + '#') {
+                     if($('#shopping-cart-table .cart.item').length === 1){
+                         window.location.reload(true);
+                     } else {
+                         $('#shopping-cart-table #cart-' + el + '-qty').closest('.cart.item').remove();
+                     }
+                 }
+            },
 
         });
 
