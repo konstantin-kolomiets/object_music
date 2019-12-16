@@ -132,5 +132,4 @@ define([
 
         return $.mage.sidebar;
     };
-
 });

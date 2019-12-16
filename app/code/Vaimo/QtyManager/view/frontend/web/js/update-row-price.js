@@ -53,7 +53,6 @@ define([
                 }
             });
         }
-
     });
 
     return $.mage.qtyManagerCart;

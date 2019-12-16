@@ -105,7 +105,8 @@ define([
             onSuccess: function () {
                 $(document).trigger('ajax:' + this.options.eventName);
                 // this.submitForm();
-            },
+            }
+
         });
 
         return $.mage.updateShoppingCart;

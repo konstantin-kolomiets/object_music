@@ -8,3 +8,4 @@ var config = {
         'Vaimo_QtyManager/js/qty-manager-init'
     ]
 };
+

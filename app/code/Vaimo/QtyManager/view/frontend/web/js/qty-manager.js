@@ -144,7 +144,6 @@ define([
         triggerChangeInput: function () {
             this.qtyInput.trigger('change');
         }
-
     });
 
     return $.mage.qtyManager;
