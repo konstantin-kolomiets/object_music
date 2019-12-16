@@ -39,9 +39,11 @@ define([
             let priceValue = price.replace(/[^\d.-]/g, '');
             let totalSum = priceUtils.formatPrice(priceValue * this.element.val(), quote.getBasePriceFormat());
             this.currentProductTotal.text(totalSum);
-            // $('[data-cart-item-update]').trigger('click');
         },
 
+        /**
+         * @description Method for extend qtyManager on cart page.
+         */
         extendQtyManager: function () {
             const self = this;
 
@@ -50,11 +52,6 @@ define([
                     self.updateCurrentTotal();
                 }
             });
-            // this.element.on('change paste keyup', _.debounce(function () {
-            //     if (self.element.val() > 0) {
-            //         self.updateCurrentTotal();
-            //     }
-            // }, this.options.debounceDelay));
         }
 
     });

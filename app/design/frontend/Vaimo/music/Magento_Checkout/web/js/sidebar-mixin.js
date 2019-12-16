@@ -121,14 +121,12 @@ define([
              * @param el = product id
              */
             removeProductInCart: function (el) {
-                 if (window.location.href === this.shoppingCartUrl || window.location.href === this.shoppingCartUrl + '#') {
-                     if($('#shopping-cart-table .cart.item').length === 1){
-                         window.location.reload(true);
-                     } else {
-                         $('#shopping-cart-table #cart-' + el + '-qty').closest('.cart.item').remove();
-                     }
-                 }
-            },
+                if($('#shopping-cart-table .cart.item').length === 1){
+                    window.location.reload(true);
+                } else {
+                    $('#shopping-cart-table #cart-' + el + '-qty').closest('.cart.item').remove();
+                }
+            }
 
         });
 
