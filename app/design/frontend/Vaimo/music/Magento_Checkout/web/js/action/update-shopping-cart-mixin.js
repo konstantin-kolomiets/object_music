@@ -1,15 +1,15 @@
 /**
- * Copyright © Magento, Inc. All rights reserved.
+ * Copyright © Vaimo, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
 define([
-           'Magento_Ui/js/modal/alert',
-           'jquery',
-           'jquery/ui',
-           'mage/validation',
-           'Vaimo_QtyManager/js/update-row-price',
-       ], function (alert, $) {
+   'Magento_Ui/js/modal/alert',
+   'jquery',
+   'jquery/ui',
+   'mage/validation',
+   'Vaimo_QtyManager/js/update-row-price'
+], function (alert, $) {
     'use strict';
 
     return function (updateCartTotals) {

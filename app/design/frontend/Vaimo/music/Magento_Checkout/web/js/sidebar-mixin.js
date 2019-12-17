@@ -1,17 +1,17 @@
 /**
- * Copyright © Magento, Inc. All rights reserved.
+ * Copyright © Vaimo, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
 define([
-           'jquery',
-           'Magento_Customer/js/customer-data',
-           'underscore',
-           'jquery/ui',
-           'mage/decorate',
-           'mage/collapsible',
-           'mage/cookies'
-       ], function ($, customerData, _) {
+   'jquery',
+   'Magento_Customer/js/customer-data',
+   'underscore',
+   'jquery/ui',
+   'mage/decorate',
+   'mage/collapsible',
+   'mage/cookies'
+], function ($, customerData, _) {
     'use strict';
 
     return function (widget) {

@@ -4,19 +4,19 @@
  */
 
 define([
-'jquery',
-'underscore',
-'mage/template',
-'text!Vaimo_QtyManager/template/qty-template.html',
-'jquery/ui',
-'mage/validation'
-   ], function ($, _, template, qtyTemplate) {
+    'jquery',
+    'underscore',
+    'mage/template',
+    'text!Vaimo_QtyManager/template/qty-template.html',
+    'jquery/ui',
+    'mage/validation'
+], function ($, _, template, qtyTemplate) {
     'use strict';
 
     $.widget('mage.qtyManager', {
         _create: function () {
             this._constructorBlock();
-            this._minQtyChecker();
+            this._qtyChecker();
             this._bind();
         },
 
@@ -46,19 +46,8 @@ define([
          */
         _setQty: function (qty) {
             this.qtyInput.val(qty);
+            this._qtyChecker();
             this.triggerChangeInput();
-        },
-
-        /**
-         * @description Method for update qty value and total price.
-         * @param {qty} qty - The new quantity value.
-         */
-        _updateQty: function (qty) {
-            this._setQty(qty);
-            // Apply triggerChangeInput on minicart
-            if (this.qtyInput.closest('#mini-cart').length) {
-                this.triggerChangeInput();
-            }
         },
 
         /**
@@ -88,9 +77,8 @@ define([
             let newQty = this._getQnty() - 1;
             if (newQty <= 1) {
                 newQty = 1;
-                this._disableButton();
             }
-            this._updateQty(newQty);
+            this._setQty(newQty);
         },
 
         /**
@@ -98,10 +86,7 @@ define([
          */
         _increaseQty: function() {
             let newQty = this._getQnty() + 1;
-            if (newQty > 1) {
-                this._enableButton();
-            }
-            this._updateQty(newQty);
+            this._setQty(newQty);
         },
 
         /**
@@ -112,7 +97,18 @@ define([
             if (newQty <= 1) {
                 newQty = 1;
             }
-            this._updateQty(newQty);
+            this._setQty(newQty);
+        },
+
+        /**
+         * @description Method for disable decrease button if quantity == 1 when page is just loaded.
+         */
+        _qtyChecker: function() {
+            if (this._getQnty() <= 1) {
+                this._disableButton();
+            } else {
+                this._enableButton();
+            }
         },
 
         /**
@@ -127,15 +123,6 @@ define([
          */
         _enableButton: function() {
             this.decreaseBtn.removeAttr('disabled');
-        },
-
-        /**
-         * @description Method for disable decrease button if quantity == 1 when page is just loaded.
-         */
-        _minQtyChecker: function() {
-            if (this._getQnty() == 1) {
-                this._disableButton();
-            }
         },
 
         /**

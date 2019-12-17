@@ -27,8 +27,8 @@ define([
          */
         _constructorBlock: function () {
             this.currentProductRow = this.element.closest('.item-info');
-            this.currentProductPrice = this.currentProductRow.find('[data-th="Price"] .price');
-            this.currentProductTotal = this.currentProductRow.find('[data-th="Subtotal"] .price');
+            this.currentProductPrice = this.currentProductRow.find('.col.price .price');
+            this.currentProductTotal = this.currentProductRow.find('.col.subtotal .price');
         },
 
         /**

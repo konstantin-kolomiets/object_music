@@ -10,7 +10,7 @@ define([
     'use strict';
 
     $('.input-text.qty').each(function () {
-        self = $(this);
+        var self = $(this);
         self.qtyManager({
             el: self
         });
