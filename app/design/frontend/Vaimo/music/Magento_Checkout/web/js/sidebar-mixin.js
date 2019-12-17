@@ -1,16 +1,13 @@
 /**
  * Copyright © Vaimo, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * See LICENSE_VAIMO.txt for license details.
  */
 
 define([
    'jquery',
    'Magento_Customer/js/customer-data',
    'underscore',
-   'jquery/ui',
-   'mage/decorate',
-   'mage/collapsible',
-   'mage/cookies'
+   'jquery/ui'
 ], function ($, customerData, _) {
     'use strict';
 

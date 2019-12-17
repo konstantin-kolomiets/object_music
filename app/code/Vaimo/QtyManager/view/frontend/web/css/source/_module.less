@@ -4,11 +4,12 @@
  */
 
 & when (@media-common = true) {
+
     .qty-wrapper {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid @color-gray80;
+        border: @border-width__base solid @color-gray80;
         .decrease,
         .increase {
             .lib-icon-font(
@@ -29,4 +30,5 @@
             border: none;
         }
     }
+
 }

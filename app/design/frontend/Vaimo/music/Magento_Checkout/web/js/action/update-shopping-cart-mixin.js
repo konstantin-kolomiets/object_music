@@ -1,6 +1,6 @@
 /**
  * Copyright © Vaimo, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * See LICENSE_VAIMO.txt for license details.
  */
 
 define([

@@ -1,6 +1,6 @@
 /**
  * Copyright © Vaimo, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * See LICENSE_VAIMO.txt for license details.
  */
 
 define([
@@ -8,12 +8,17 @@ define([
     'underscore',
     'mage/template',
     'text!Vaimo_QtyManager/template/qty-template.html',
-    'jquery/ui',
-    'mage/validation'
+    'jquery/ui'
 ], function ($, _, template, qtyTemplate) {
     'use strict';
 
     $.widget('mage.qtyManager', {
+        options: {
+            decreaseBtnSelector: '[data-qty=decrease]',
+            increaseBtnSelector: '[data-qty=increase]',
+            qtyInputSelector: '.input-text.qty',
+        },
+
         _create: function () {
             this._constructorBlock();
             this._qtyChecker();
@@ -28,8 +33,8 @@ define([
             this.element.after($(template(qtyTemplate, '')));
             this.block = this.element.next('[data-qty-wrapper]');
             this.block.find('[data-input]').replaceWith(this.element);
-            this.qtyInput = this.block.find('.input-text.qty');
-            this.decreaseBtn = this.block.find('[data-qty=decrease]');
+            this.qtyInput = this.block.find(this.options.qtyInputSelector);
+            this.decreaseBtn = this.block.find(this.options.decreaseBtnSelector);
         },
 
         /**
@@ -55,18 +60,16 @@ define([
          */
         _bind: function () {
             let self = this;
-            this.block.on('click', '[data-qty=decrease]', function (e) {
+            this.block.on('click', this.options.decreaseBtnSelector, function (e) {
                 e.preventDefault();
                 self._decreaseQty();
             });
-            this.block.on('click', '[data-qty=increase]', function (e) {
+            this.block.on('click', this.options.increaseBtnSelector, function (e) {
                 e.preventDefault();
                 self._increaseQty();
             });
-            this.block.on('focusout', '.input-text.qty', function () {
-                if(!this.closest('#mini-cart')){
-                    self._isValidQtyUpdate();
-                }
+            this.block.on('focusout', this.options.qtyInputSelector, function () {
+                self._isValidQtyUpdate();
             });
         },
 
