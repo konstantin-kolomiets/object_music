@@ -136,6 +136,7 @@ return [
         'Vaimo_GuitareMaterial' => 1,
         'Vaimo_HelloWorld' => 1,
         'Vaimo_MasterClass' => 1,
+        'Vaimo_MusicCheckout' => 1,
         'Vaimo_QtyManager' => 1,
         'Vaimo_Socials' => 1,
         'Vertex_Tax' => 1
