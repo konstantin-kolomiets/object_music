@@ -1,37 +1,22 @@
 <?php
     /** @var \Vaimo\MusicCheckout\Block\Customer\Widget\HouseApartment $block */
-    $house = 'house';
-    $apartment = 'apartment';
+    $scopeConfig = ['house', 'apartment'];
 ?>
-<div class="field custom">
-    <label for="<?php echo $block->escapeHtml($block->getFieldId($house)); ?>" class="label">
-        <span><?php echo $block->escapeHtml($block->getFieldLabel($house)); ?></span>
-    </label>
-    <div class="control">
-        <input type="text"
-               class="input-text"
-               id="<?php echo $block->escapeHtml($block->getFieldId($house)); ?>"
-               name="<?php echo $block->escapeHtml($block->getFieldName($house)); ?>"
-               value="<?php echo $block->escapeHtml($block->getValue($house)); ?>"
-               title="<?php echo $block->escapeHtml($block->getFieldLabel($house)); ?>"
-            <?php /* @escapeNotVerified */ echo $block->getFieldParams() ?>
-            <?php if($block->isRequired($house)) echo 'data-validate="{required:true}"' ?>
-        >
+<?php foreach ($scopeConfig as $item){ ?>
+    <div class="field custom">
+        <label for="<?php echo $block->escapeHtml($block->getFieldId($item)); ?>" class="label">
+            <span><?php echo $block->escapeHtml($block->getFieldLabel($item)); ?></span>
+        </label>
+        <div class="control">
+            <input type="text"
+                   class="input-text"
+                   id="<?php echo $block->escapeHtml($block->getFieldId($item)); ?>"
+                   name="<?php echo $block->escapeHtml($block->getFieldName($item)); ?>"
+                   value="<?php echo $block->escapeHtml($block->getValue($item)); ?>"
+                   title="<?php echo $block->escapeHtml($block->getFieldLabel($item)); ?>"
+                <?php /* @escapeNotVerified */ echo $block->getFieldParams() ?>
+                <?php if($block->isRequired($item)) echo 'data-validate="{required:true}"' ?>
+            >
+        </div>
     </div>
-</div>
-<div class="field custom">
-    <label for="<?php echo $block->escapeHtml($block->getFieldId($apartment)); ?>" class="label">
-        <span><?php echo $block->escapeHtml($block->getFieldLabel($apartment)); ?></span>
-    </label>
-    <div class="control">
-        <input type="text"
-               class="input-text"
-               id="<?php echo $block->escapeHtml($block->getFieldId($apartment)); ?>"
-               name="<?php echo $block->escapeHtml($block->getFieldName($apartment)); ?>"
-               value="<?php echo $block->escapeHtml($block->getValue($apartment)); ?>"
-               title="<?php echo $block->escapeHtml($block->getFieldLabel($apartment)); ?>"
-            <?php /* @escapeNotVerified */ echo $block->getFieldParams() ?>
-            <?php if($block->isRequired($apartment)) echo 'data-validate="{required:true}"' ?>
-        >
-    </div>
-</div>
+<?php } ?>

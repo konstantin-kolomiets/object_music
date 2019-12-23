@@ -74,11 +74,6 @@ class HouseApartment extends Template
     {
         $address = $this->getAddress();
         if ($address instanceof AddressInterface) {
-//            $result = [];
-//            $address->getCustomAttribute('house') ? $result['house'] = $address->getCustomAttribute('house')->getValue() : null;
-//            $address->getCustomAttribute('apartment') ? $result['apartment'] = $address->getCustomAttribute('apartment')->getValue() : null;
-//            return $result;
-
             return $address->getCustomAttribute($val)
                 ? $address->getCustomAttribute($val)->getValue()
                 : null;
