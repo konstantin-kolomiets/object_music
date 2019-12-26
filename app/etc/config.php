@@ -128,6 +128,7 @@ return [
         'Klarna_Ordermanagement' => 1,
         'Klarna_Kp' => 1,
         'Magento_PaypalReCaptcha' => 1,
+        'Mytest_Checkout' => 1,
         'Temando_Shipping' => 1,
         'Vaimo_AboutPage' => 1,
         'Vaimo_CustomWidget' => 1,
