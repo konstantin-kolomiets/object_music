@@ -4,4 +4,7 @@
         <attribute code="house" type="string" />
         <attribute code="apartment" type="string" />
     </extension_attributes>
+    <extension_attributes for="Magento\Quote\Api\Data\AddressInterface">
+        <attribute code="custom_field" type="string" />
+    </extension_attributes>
 </config>

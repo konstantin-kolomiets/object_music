@@ -4,4 +4,15 @@
         <plugin name="Vaimo\MusicCheckout\Customer\AddressEditPlugin"
                 type="Vaimo\MusicCheckout\Plugin\Customer\AddressEditPlugin" sortOrder="10"/>
     </type>
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="add-house-apartment-fields"
+                type="Vaimo\MusicCheckout\Model\Checkout\Plugin\LayoutProcessorPlugin" sortOrder="10"/>
+    </type>
+    <!--<type name="Magento\Checkout\Block\Onepage">-->
+        <!--<arguments>-->
+            <!--<argument name="layoutProcessors" xsi:type="array">-->
+                <!--<item name="custom_field_layoutprocessor" xsi:type="object">Vaimo\MusicCheckout\Block\Checkout\LayoutProcessor</item>-->
+            <!--</argument>-->
+        <!--</arguments>-->
+    <!--</type>-->
 </config>
