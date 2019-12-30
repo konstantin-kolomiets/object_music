@@ -33,17 +33,9 @@ define(
            saveShippingInformation: function () {
                var payload;
 
-               var shippingMethod = quote.shippingMethod().method_code+'_'+quote.shippingMethod().carrier_code;
-
-               var input_custom_shipping_field = null;
-               var date_custom_shipping_field = null;
-               var select_custom_shipping_field = null;
-
-               if(shippingMethod == "freeshipping_freeshipping") {
-                   input_custom_shipping_field = jQuery('[name="custom_shipping_field[input_custom_shipping_field]"]').val();
-                   date_custom_shipping_field = jQuery('[name="custom_shipping_field[date_custom_shipping_field]"]').val();
+               var input_custom_shipping_field = jQuery('[name="custom_shipping_field[input_custom_shipping_field]"]').val(),
+                   date_custom_shipping_field = jQuery('[name="custom_shipping_field[date_custom_shipping_field]"]').val(),
                    select_custom_shipping_field = jQuery('[name="custom_shipping_field[select_custom_shipping_field]"]').val();
-               }
 
                if (!quote.billingAddress()) {
                    selectBillingAddressAction(quote.shippingAddress());

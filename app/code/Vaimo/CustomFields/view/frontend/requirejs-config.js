@@ -6,13 +6,6 @@
 */
 
 var config = {
-   config: {
-       mixins: {
-           'Magento_Checkout/js/view/shipping': {
-               'Vaimo_CustomFields/js/view/shipping': true
-           }
-       }
-   },
    "map": {
        "*": {
            "Magento_Checkout/js/model/shipping-save-processor/default" : "Vaimo_CustomFields/js/shipping-save-processor"
