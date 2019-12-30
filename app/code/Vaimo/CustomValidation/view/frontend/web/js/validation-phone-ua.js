@@ -1,14 +1,14 @@
 define([
-           'jquery',
-           'jquery/ui',
-           'jquery/validate',
-           'mage/translate'
-       ], function ($) {
-    'use strict';
+   'jquery',
+   'jquery/ui',
+   'jquery/validate',
+   'mage/translate',
+], function ($) {
+'use strict';
 
     return function () {
         $.validator.addMethod(
-            'phoneUA',
+            'phone-ua',
             function (phoneNumber, element) {
                 phoneNumber = phoneNumber.replace(/\s+/g, '');
                 return this.optional(element) || phoneNumber.length > 9 &&

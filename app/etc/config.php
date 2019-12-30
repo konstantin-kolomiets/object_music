@@ -131,6 +131,7 @@ return [
         'Temando_Shipping' => 1,
         'Vaimo_AboutPage' => 1,
         'Vaimo_CustomFields' => 1,
+        'Vaimo_CustomValidation' => 1,
         'Vaimo_CustomWidget' => 1,
         'Vaimo_Delivery' => 1,
         'Vaimo_Events' => 1,
