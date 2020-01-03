@@ -1,0 +1,22 @@
+<?php
+/**
+ * @var $this Vaimo\CategoriesBlock\Block\Categories;
+ */
+$categories = $this->getStoreCategories(true,false,true);
+?>
+<div class="categories-collection">
+    <ul class="items">
+        <?php foreach ($categories as $category) { ?>
+            <?php
+                $cat = $this->getCategorymodel($category->getId());
+                $image = $cat->getImageUrl();
+            ?>
+            <li class="item">
+                <a href="<?= $category->getRequestPath(); ?>" class="item-inner">
+                    <img src="<?= $image; ?>" alt="alt" class="item-img">
+                    <span class="item-title"><?= $category->getName(); ?></span>
+                </a>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
