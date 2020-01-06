@@ -1,0 +1,159 @@
+//  Copyright © Vaimo Group. All rights reserved.
+//  See LICENSE_VAIMO.txt for license details.
+
+//
+//  Variables
+//  _____________________________________________
+
+@product-item__hover__box-shadow: 0 5px 6px rgba(0,0,0,.15), 0 3px 16px rgba(0,0,0,.07), 0 9px 12px rgba(0,0,0,.09);
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .product-items {
+        align-items: stretch;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: stretch;
+        margin: 0 auto;
+        border-top: 1px solid @color-gray91;
+        border-left: 1px solid @color-gray91;
+
+        .product-item {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .product-item {
+        .product-item-photo {
+            display: block;
+            margin-bottom: @font-size__ms;
+        }
+        .image {
+            display: block;
+            margin: auto;
+        }
+        .price-box {
+            margin: @indent__s 0 @font-size__ms;
+        }
+    }
+    .page-products .product-item-info {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+        border: none;
+        border-right: 1px solid @color-gray91;
+        border-bottom: 1px solid @color-gray91;
+        padding: @font-size__ms;
+        overflow: hidden;
+        &:before {
+            content: '';
+            position: absolute;
+            left: -@indent__sm;
+            top: -@indent__sm;
+            right: -@indent__sm;
+            bottom: -@indent__sm;
+            background: @color-white;
+            .lib-css(box-shadow, @product-item__hover__box-shadow);
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .product-items  {
+        .product-item {
+            width: 100%/3;
+        }
+    }
+
+    .product-item-info {
+        .products-grid & {
+            &:hover,
+            &.active {
+                .lib-css(background, @product-item__hover__background-color);
+                .lib-css(box-shadow, none);
+                border: none;
+                border-right: 1px solid @color-gray91;
+                border-bottom: 1px solid @color-gray91;
+                margin: 0;
+                padding: @indent__ms;
+                overflow: visible;
+                &:before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .page-products {
+        .products-grid {
+            .product-item-inner {
+                &:before {
+                    content: '';
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .products-grid {
+        .product-item-info {
+            &:not(:hover) {
+                &:not(.active) {
+                    .product-item-inner {
+                        display: block;
+                        height: auto;
+                        margin: 0;
+                        padding: 0;
+                        position: static;
+                        width: auto;
+                    }
+                }
+            }
+        }
+        .product-item-actions {
+            margin: 0;
+        }
+    }
+
+    .product-item-inner {
+        .products-grid & {
+            .lib-css(background, none);
+            .lib-css(box-shadow, none);
+            border: none;
+            left: auto;
+            margin: @indent__sm 0 0;
+            padding: 0;
+            position: static;
+            right: auto;
+            display: block;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .page-products {
+        .products-grid {
+            .product-item {
+                width: 25%;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
