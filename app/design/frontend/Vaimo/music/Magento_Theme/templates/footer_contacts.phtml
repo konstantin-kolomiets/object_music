@@ -5,50 +5,8 @@
  */
 ?>
 <div class="footer-contacts">
-    <address>Plehanivska st, 40</address>
-    <a href="tel:+389998887766">38 (999) 888-77-66</a>
-    <a href="tel:+389998887766">38 (999) 888-77-66</a>
-    <a href="mailto:music@gmail.com">music@gmail.com</a>
+    <address><?= __('Plehanivska st, 40') ?></address>
+    <a href="tel:+389998887766"><?= __('38 (999) 888-77-66') ?></a>
+    <a href="tel:+389998887766"><?= __('38 (999) 888-77-66') ?></a>
+    <a href="mailto:music@gmail.com"><?= __('music@gmail.com') ?></a>
 </div>
-<style>
-    .footer.content {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .footer.content .block {
-        float: none;
-        width: 250px;
-    }
-    .footer-contacts {
-        display: inline-flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-    }
-    .footer-contacts > *:not(:first-child) {
-        margin-top: 9px;
-    }
-    .footer-contacts a {
-        color: #575757;
-    }
-    .footer-contacts a:hover {
-        color: #000000;
-    }
-    .footer.content .links {
-        padding: 0;
-        margin: 0 30px;
-    }
-    .block.newsletter .form.subscribe {
-        display: block;
-    }
-    .block.newsletter .action.subscribe {
-        border-radius: 0;
-        width: 100%;
-        margin-top: 10px;
-    }
-    .footer-menu-wrapper {
-        width: 51%;
-        display: flex;
-        justify-content: space-around;
-    }
-</style>
