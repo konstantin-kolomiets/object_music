@@ -1,0 +1,22 @@
+& when (@media-common = true) {
+    * {
+        box-sizing: border-box;
+    }
+    .page-wrapper {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: url('@{baseDir}images/body_bg.svg');
+            opacity: .5;
+            z-index: -1;
+        }
+    }
+    .page-main {
+        background: @color-white;
+    }
+}

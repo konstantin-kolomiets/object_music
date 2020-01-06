@@ -130,6 +130,7 @@ return [
         'Magento_PaypalReCaptcha' => 1,
         'Temando_Shipping' => 1,
         'Vaimo_AboutPage' => 1,
+        'Vaimo_CategoriesBlock' => 1,
         'Vaimo_CustomFields' => 1,
         'Vaimo_CustomValidation' => 1,
         'Vaimo_CustomWidget' => 1,

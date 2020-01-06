@@ -9,8 +9,8 @@
     <media>
         <images module="Magento_Catalog">
             <image id="category_page_grid" type="small_image">
-                <width>200</width>
-                <height>200</height>
+                <width>190</width>
+                <height>190</height>
             </image>
         </images>
     </media>

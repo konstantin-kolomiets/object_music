@@ -1,0 +1,112 @@
+& when (@media-common = true) {
+    .events-section {
+        margin: @indent__l 0;
+        .section-title {
+            text-transform: uppercase;
+            font-size: @font-size__l;
+            font-weight: @font-weight__heavier;
+        }
+    }
+    .events {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 -@indent__s;
+        .event {
+            padding: @indent__ms @indent__s;
+            width: 50%;
+            text-align: center;
+            .image {
+                margin: 0 auto;
+            }
+            >*:not(:last-child) {
+                margin-bottom: @indent__sm;
+            }
+        }
+        .event-title {
+            font-size: @font-size__m;
+            font-weight: @font-weight__heavier;
+        }
+        .event-time {
+            font-weight: @font-weight__heavier;
+            font-size: @font-size__ms;
+            color: @color-gray34;
+        }
+        .event-description {
+            color: @color-gray40;
+        }
+    }
+
+    .events-modal {
+        &.modal-popup {
+            .modal-inner-wrap {
+                width: 400px;
+                margin: 0 auto;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        .fieldset-wrapper-title {
+            text-align: center;
+            margin-bottom: @indent__s;
+        }
+        .modal-footer {
+            display: none;
+        }
+        fieldset {
+            padding: 0;
+            margin: 0;
+            border: none;
+            text-align: center;
+        }
+        .field {
+            margin-bottom: @indent__s;
+        }
+    }
+    .events-popup {
+        position: relative;
+        .success {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: @color-white;
+            text-align: center;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            font-size: @font-size__ls;
+            padding: @indent__l;
+            z-index: 1;
+        }
+        .error {
+            color: red;
+            margin-top: @indent__s;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .events {
+        .event {
+            width: 33.333%;
+        }
+        .event-title {
+            line-height: @line-height__s;
+        }
+        .event-time {
+            font-size: @font-size__ls;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .events .event {
+        width: 25%;
+    }
+}

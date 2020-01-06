@@ -1,3 +1,8 @@
+/*
+ * Copyright © Vaimo Group. All rights reserved.
+ * See LICENSE_VAIMO.txt for license details.
+ */
+
 & when (@media-common = true) {
     .lib-font-face(
         @family-name: @font-family-name__base,
@@ -32,3 +37,43 @@
 }
 
 @font-size-ratio__base: 1.5;
+
+//
+//  Indents
+//  ---------------------------------------------
+
+@indent__base: @line-height__computed; // 20px
+@indent__xl: @indent__base * 2; // 40px
+@indent__l: @indent__base * 1.5; // 30px
+@indent__m: @indent__base * 1.25; // 25px
+@indent__ms: @indent__base / 1.33333333; // 15px
+@indent__sl: @indent__base / 1.666; // 12px
+@indent__s: @indent__base / 2; // 10px
+@indent__sm: @indent__base / 2.5; // 8px
+@indent__xs: @indent__base / 4; // 5px
+
+//
+//  Sizes
+//  ---------------------------------------------
+
+@font-size__base: unit(@font-size-unit-ratio * @font-size-ratio__base, px); // 14.4 Base font size value in <b>px</b>
+@font-size__xl: ceil(1.5 * @font-size__base); // 21px
+@font-size__l: ceil(1.25 * @font-size__base); // 18px
+@font-size__ls: ceil(1.181 * @font-size__base); // 17px
+@font-size__m: ceil(1.112 * @font-size__base); // 16px
+@font-size__ms: ceil(1.0417 * @font-size__base); // 15px
+@font-size__s: ceil(.85 * @font-size__base); // 12px
+@font-size__xs: floor(.75 * @font-size__base); // 11px
+
+//
+//  Links
+//  ---------------------------------------------
+
+@link__color: @color-accent;
+@link__text-decoration: none;
+
+@link__hover__color: darken(@color-accent, 5%);
+@link__hover__text-decoration: none;
+
+@link__active__color: @active__color;
+@link__active__text-decoration: none;

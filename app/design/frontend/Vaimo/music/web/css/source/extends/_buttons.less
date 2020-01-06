@@ -1,1 +1,78 @@
-@button__border-radius: 4px;
+/*
+ * Copyright © Vaimo Group. All rights reserved.
+ * See LICENSE_VAIMO.txt for license details.
+ */
+
+//  Common
+
+//  Primary button
+@button-primary__background: @color-accent;
+@button-primary__border: none;
+
+@button-primary__hover__background: @color-accent;
+@button-primary__hover__border: none;
+
+@button-primary__active__border: none;
+
+//  Display settings
+@button__border-radius: 0;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //  Using buttons mixins
+    a.action.primary,
+    .button.primary a {
+        text-decoration: none;
+    }
+
+    a.action.primary {
+        .lib-link-as-button();
+    }
+
+    .action.primary {
+        .lib-button-primary();
+        position: relative;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: auto;
+            width: 0;
+            right: 0;
+            height: 100%;
+            background: darken(@color-accent, 5%);
+            transition: all .3s ease;
+        }
+        &:hover:before {
+            width: 100%;
+            left: 0;
+            right: 0;
+        }
+    }
+
+    button,
+    .action.primary,
+    .action.secondary,
+    .action.tertiary,
+    .action-primary,
+    .action-secondary,
+    .button.primary a,
+    .button.secondary a,
+    .button.tertiary a {
+        text-decoration: none;
+
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: none;
+        }
+
+        span {
+            position: relative;
+        }
+    }
+}
