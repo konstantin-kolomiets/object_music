@@ -1,0 +1,109 @@
+//  Copyright © Vaimo Group. All rights reserved.
+//  See LICENSE_VAIMO.txt for license details.
+
+& when (@media-common = true) {
+    .footer.content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .block {
+            float: none;
+            width: 100%;
+        }
+        .links {
+            padding: 0;
+            margin: 0 @indent__m;
+        }
+    }
+
+
+    .footer-contacts {
+        display: inline-flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        > *:not(:first-child) {
+            margin-top: @indent__sm;
+        }
+        a {
+            color: @color-gray34;
+            &:hover {
+                color: @color-black;
+            }
+        }
+    }
+
+    .block.newsletter {
+        .form.subscribe {
+            display: block;
+        }
+        .action.subscribe {
+            border-radius: 0;
+            width: 100%;
+            margin-top: @indent__s;
+        }
+    }
+
+    .footer-menu-wrapper {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        order: 3;
+        margin: 10px 0;
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .footer.content .links > li {
+        background: transparent;
+        border: none;
+        font-size: 1em;
+    }
+    .footer-socials-wrapper {
+        max-width: 50%;
+    }
+    .page-footer {
+        font-size: @font-size__s;
+    }
+    .footer.content .socials .socials-item-link{
+        margin-left: @indent__xs;
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xs) {
+    .footer-menu-wrapper {
+        width: 45%;
+    }
+    .footer.content {
+        .block {
+            width: 250px;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .footer-menu-wrapper {
+        width: 51%;
+        order: initial;
+        margin: 0;
+    }
+    .footer.content {
+        .block {
+            float: none;
+        }
+        .links {
+            padding-right: 0;
+        }
+    }
+}
