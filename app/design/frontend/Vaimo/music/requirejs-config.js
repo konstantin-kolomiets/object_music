@@ -12,8 +12,7 @@ var config = {
         '*': {
             'slick': 'js/vendor/slick.min',
             'slider': 'js/component/slider',
-            'vendor/responsive-utils': 'js/vendor/responsive-utils',
-            'phoneUA': 'js/mixins/validation-mixin',
+            'vendor/responsive-utils': 'js/vendor/responsive-utils'
         }
     }
 };

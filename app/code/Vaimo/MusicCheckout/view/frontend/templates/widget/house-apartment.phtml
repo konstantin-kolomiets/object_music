@@ -1,0 +1,22 @@
+<?php
+    /** @var \Vaimo\MusicCheckout\Block\Customer\Widget\HouseApartment $block */
+    $scopeConfig = ['house', 'apartment'];
+?>
+<?php foreach ($scopeConfig as $item){ ?>
+    <div class="field custom">
+        <label for="<?php echo $block->escapeHtml($block->getFieldId($item)); ?>" class="label">
+            <span><?php echo $block->escapeHtml($block->getFieldLabel($item)); ?></span>
+        </label>
+        <div class="control">
+            <input type="text"
+                   class="input-text"
+                   id="<?php echo $block->escapeHtml($block->getFieldId($item)); ?>"
+                   name="<?php echo $block->escapeHtml($block->getFieldName($item)); ?>"
+                   value="<?php echo $block->escapeHtml($block->getValue($item)); ?>"
+                   title="<?php echo $block->escapeHtml($block->getFieldLabel($item)); ?>"
+                <?php /* @escapeNotVerified */ echo $block->getFieldParams() ?>
+                <?php if($block->isRequired($item)) echo 'data-validate="{required:true}"' ?>
+            >
+        </div>
+    </div>
+<?php } ?>
