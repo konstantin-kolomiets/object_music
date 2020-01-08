@@ -1,3 +1,6 @@
+//  Copyright © Vaimo Group. All rights reserved.
+//  See LICENSE_VAIMO.txt for license details.
+
 & when (@media-common = true) {
     .modal-popup .modal-inner-wrap {
         top: 50%;
@@ -13,5 +16,18 @@
     }
     .modal-popup._show .modal-inner-wrap {
         transform: translate(-50%, -50%);
+    }
+
+    .add-to-cart-popup {
+        .modal-inner-wrap {
+            text-align: center;
+        }
+        .modal-footer button {
+            margin: @indent__xs;
+        }
+    }
+    .add-to-cart-modal-content .title {
+        font-size: @font-size__ms;
+        margin-bottom: @indent__xl;
     }
 }
