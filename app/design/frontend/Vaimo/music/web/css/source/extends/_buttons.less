@@ -76,3 +76,14 @@
         }
     }
 }
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .product-item .action.primary {
+        .lib-css(padding, @indent__xs @indent__s);
+        .lib-css(font-size, @font-size__s);
+    }
+}

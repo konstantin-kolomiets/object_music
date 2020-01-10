@@ -1,2 +1,41 @@
+//  Copyright © Vaimo Group. All rights reserved.
+//  See LICENSE_VAIMO.txt for license details.
+
+//
+//  Variables
+//  _____________________________________________
+
 @icon-location: "\e947";
 @icon-mobile: "\e958";
+@icon-compare: "\f24e";
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .icon-location {
+        .lib-icon-font(
+            @icon-location,
+            @_icon-font: @icon-font-name
+        )
+    }
+
+    .icon-mobile {
+        .lib-icon-font(
+            @icon-mobile,
+            @_icon-font: @icon-font-name
+        )
+    }
+
+    .icon-compare {
+        .lib-icon-font(
+            @icon-compare,
+            @_icon-font: @icon-font-name
+        )
+    }
+
+    i[class^="icon-"] {
+        font-style: normal;
+    }
+}

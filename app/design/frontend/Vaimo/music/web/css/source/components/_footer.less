@@ -1,7 +1,14 @@
-//  Copyright © Vaimo Group. All rights reserved.
-//  See LICENSE_VAIMO.txt for license details.
+/**
+ * Copyright © Vaimo Group. All rights reserved.
+ * See LICENSE_VAIMO.txt for license details.
+ */
+
+//
+//  Common
+//  _____________________________________________
 
 & when (@media-common = true) {
+
     .footer.content {
         display: flex;
         justify-content: space-between;
@@ -12,10 +19,18 @@
         }
         .links {
             padding: 0;
-            margin: 0 @indent__m;
+            margin: 0;
+            &:not(:last-child) {
+                margin-right: @indent__base;
+            }
+            a {
+                &:hover {
+                    color: @color-black;
+                    text-decoration: none;
+                }
+            }
         }
     }
-
 
     .footer-contacts {
         display: inline-flex;
@@ -45,11 +60,16 @@
 
     .footer-menu-wrapper {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         width: 100%;
         order: 3;
-        margin: 10px 0;
+        margin: @indent__sm 0;
     }
+
+    .copyright {
+        background: @color-accent-dark;
+    }
+
 }
 
 //
@@ -57,35 +77,51 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
-    .footer.content .links > li {
-        background: transparent;
-        border: none;
-        font-size: 1em;
-    }
-    .footer-socials-wrapper {
-        max-width: 50%;
-    }
+
     .page-footer {
         font-size: @font-size__s;
     }
-    .footer.content .socials .socials-item-link{
-        margin-left: @indent__xs;
+
+    .footer-socials-wrapper {
+        max-width: 50%;
     }
+
+    .footer.content {
+        .socials .socials-item-link{
+            margin-left: @indent__xs;
+        }
+
+        .links {
+            a,
+            strong {
+                padding: @indent__sm 0;
+            }
+
+            > li {
+                background: transparent;
+                border: none;
+                font-size: @font-size__base;
+            }
+        }
+
+    }
+
 }
 
 //
-//  Desktop
+//  Tablet
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xs) {
+
     .footer-menu-wrapper {
         width: 45%;
     }
-    .footer.content {
-        .block {
-            width: 250px;
-        }
+
+    .footer.content .block {
+        width: 250px;
     }
+
 }
 
 //
@@ -93,17 +129,28 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
-    .footer-menu-wrapper {
-        width: 51%;
-        order: initial;
-        margin: 0;
+
+    .page-footer {
+        background: @color-gray-bg;
     }
+
     .footer.content {
         .block {
             float: none;
         }
         .links {
             padding-right: 0;
+            margin: 0 @indent__m;
+            &:not(:last-child) {
+                margin-right: @indent__m;
+            }
         }
+    }
+
+    .footer-menu-wrapper {
+        justify-content: space-around;
+        width: 51%;
+        order: initial;
+        margin: 0;
     }
 }

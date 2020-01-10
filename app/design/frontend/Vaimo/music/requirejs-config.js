@@ -5,8 +5,7 @@
 
 var config = {
     deps: [
-        'jquery',
-        'js/sticky-header'
+        'jquery'
     ],
     map: {
         '*': {
