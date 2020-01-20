@@ -1,8 +1,12 @@
-define([
-           'jquery',
-       ], function ($) {
-    'use strict';
+/**
+ * Copyright © Vaimo, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
 
+define([
+   'jquery',
+], function ($) {
+'use strict';
     return function (validator) {
         validator.addRule(
             'phone-ua',

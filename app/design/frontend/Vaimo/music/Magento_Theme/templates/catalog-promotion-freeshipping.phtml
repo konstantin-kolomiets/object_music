@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © Vaimo Group. All rights reserved.
+ * See LICENSE_VAIMO.txt for license details.
+ */
+?>
+<!-- ko scope: 'catalogPromotion' -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "catalogPromotion": {
+                        "component": "Magento_Theme/js/promo"
+                    }
+                }
+            }
+        }
+    }
+</script>

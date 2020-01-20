@@ -1,0 +1,15 @@
+<!--
+/**
+ * Copyright (c) Vaimo Group. All rights reserved.
+ * See LICENSE_VAIMO.txt for license details.
+ */
+-->
+
+<div id="catalog-promotion" class="catalog-promotion">
+    <div visible="!isFreeShippingAvailable()">
+        <!-- ko template: {name: defaultTemplate} --><!-- /ko -->
+    </div>
+    <div visible="isFreeShippingAvailable">
+        <!-- ko template: {name: amountDoneTemplate} --><!-- /ko -->
+    </div>
+</div>
